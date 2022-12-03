@@ -1,11 +1,9 @@
-from PIL import Image
+import tensorflow as tf
 import numpy as np
 from skimage import io,transform
 import matplotlib.pyplot as plt
 from scipy.ndimage import rotate
 from skimage.filters import gaussian
-import tensorflow as tf
-from prettytable import PrettyTable
 
 def gaussian_blur(img,sigma):
   """Returns the Gaussian blurred version of the image 'img' with a sigma value of 'sigma'"""
@@ -111,9 +109,12 @@ latent_dim = 20 #Latent dimentions of the CVAE
 image_file = "20111206DF" #Image file used to obtain the training sets
 path = "/content/drive/Shareddrives/ML_Project/"#Path to train image file
 
-#Load testing set and model
-testing_set = np.load(path+image_file.strip(".jpg")+"testing_set_Size{}.npy")
+#Load model
 model = tf.keras.models.load_model(path+'model_'+image_file.strip(".jpg")+'_Size{}_SIGMA{}_epochs{}_latentdim{}'.format(SIZE,SIGMA,epochs,latent_dim),compile=False)
+
+#Crop image file used in training to get testing set in sections of size 'SIZE'
+files = [path+"20111206DF.jpg"]
+testing_set = crop_images(files,SIZE)
 
 #Crop image files that you want to check for anomalies in sections of size 'SIZE'
 files = ["20111206DF.jpg"]

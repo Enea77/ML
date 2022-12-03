@@ -1,11 +1,9 @@
-from PIL import Image
+import tensorflow as tf
 import numpy as np
 from skimage import io,transform
 import matplotlib.pyplot as plt
 from scipy.ndimage import rotate
 from skimage.filters import gaussian
-import tensorflow as tf
-from prettytable import PrettyTable
 
 def gaussian_blur(img,sigma):
   """Returns the Gaussian blurred version of the image 'img' with a sigma value of 'sigma'"""
@@ -157,6 +155,7 @@ TiFMag_defect_images = preprocess_images(TiFMag_defect_images,SIZE)
 model = tf.keras.models.load_model(path+'model_'+set_name+'_Size{}_SIGMA{}_epochs{}_latentdim{}'.format(SIZE,SIGMA,epochs,latent_dim),compile=False)
 #Example: plotting the prediction of a bulk image
 plt.imshow(model.predict(bulk_images[:1])[0,:,:,0],cmap='jet')
+
 #Get the predictions for each set
 bulk_prd = get_predictions_from_model(model,bulk_images)
 antiTi_defect_prd = get_predictions_from_model(model,antiTi_defect_images)
@@ -177,6 +176,7 @@ SrFMag_defect_diff = get_difference(SrFMag_defect_images,antiTi_defect_prd)
 
 #Plot the pixels' intenisty distribution for the bulk samples
 y,x = plt.hist(bulk_diff.flatten(),100,)[:2]
+#Set MAX_PIXEL based on plot above
 MAX_PIXEL = 0.2 #Describes the largest absolute value of pixel intensity in a bulk difference image
 
 #Obtain a heatmap for each difference image, ignoring all pixels of magnitude lower than MAX_PIXEL
@@ -197,6 +197,9 @@ plot_ANM([get_avg_near_max(antiSr_defect_heatmap),get_avg_near_max(SrVacancy_def
                     legend_loc=(0.091,0.68),limit_coefficient=1.5,xmax=0.4,xmin=-0.4)
 plt.xlabel("Average pixel intensity near maximum",fontsize=25)
 plt.ylabel("Counts", fontsize=25)
+plt.xticks(fontsize=22)
+plt.yticks(fontsize=22)
+plt.savefig(path+"Average pixel intensity near maximum.svg")
 
 
 def plot_example(N=1,columns=4,rows=3,cmap='jet',size=(16,12),Labels=["Bulk","Anti Sr Site","Sr Vacancy","Ferroelectric Sr"],Title="title"):

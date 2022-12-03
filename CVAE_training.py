@@ -1,11 +1,9 @@
-from PIL import Image
+import tensorflow as tf
 import numpy as np
 from skimage import io,transform
 import matplotlib.pyplot as plt
 from scipy.ndimage import rotate
 from skimage.filters import gaussian
-import tensorflow as tf
-import tensorflow_probability as tfp
 import time
 from IPython import display
 
@@ -147,7 +145,7 @@ def predict(model, inp_image, apply_sigmoid=True):
   predictions = model.sample(z,apply_sigmoid)
   return predictions[0,:,:,0]
 
-def get_testing_training_sets(image='20111206DF', size=64,n_images=10):
+def get_testing_training_sets(image='20111206DF2', size=64,n_images=10):
     """Reads an image file 'image' and crops it in 2*n_images samaller sections of size 'size'. Sections from the 
     top half are added in the training set while those from the bottom half are added to the testing set. 
     Trainign and testing sets are then returned as numpy arrays"""
@@ -203,14 +201,14 @@ SIZE = 64 #set the size in pixels of the training samples
 SIGMA = 2 #Set the Gaussian Blurring sigma value
 epochs = 200 #Number of epochs on which to train the CVAE
 latent_dim = 20 #Latent dimentions of the CVAE
-image_file = "20111206DF" #Image file used to obtain the training sets
+image_file = "20111206DF2" #Image file used to obtain the training sets
 path = "/"#Path to image file
 training_set, testing_set = get_testing_training_sets(path+image_file,SIZE,100) 
 
 
 #Uncomment the lines below to use the provided training and testing sets
 '''
-image_file = "20111206DF"
+image_file = "20111206DF2"
 mix_training_set = np.load("/content/drive/Shareddrives/ML_Project/raw_training_set_"+image_file+"_64.npy")
 np.random.shuffle(mix_training_set)
 mix_training_set.shape

@@ -1,4 +1,5 @@
 <h1> Convolutional Neural Networks for Anomaly Detection in Scanning Transmission Electron Microscopy  </h1>
+
 `CVAE_training.py` - Code for training the CVAE and saving the trained model. It requires a bulk sample, which is then divided into <br />
 smaller sections to obtain a training set (to train the CVAE) and a testing set (to test the behavior of the CVAE on bulks samples <br />
 for future comparisons to distinguish bulk or anomalies). Parameters like `SIZE`, `SIGMA`, `epochs`, and `latent_dim` can be modified by the <br />

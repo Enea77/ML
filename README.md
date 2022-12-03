@@ -2,6 +2,8 @@
 <h4> Enea Prifti, James P. Buban, Arashdeep Thind, Robert F Klie </h4>
 <h4> University of Illinois Chicago, Department of Physics, 845 W Taylor Street, Chicago, IL 60607 </h4>
 
+The codes in this repository are used in the paper mentioned above to detect anomalies in the pattern of a crystal lattice <br />
+using a Convolutional Variational Autoencoder trained to reproduce that pattern. <br />
 
 `CVAE_training.py` - Code for training the CVAE and saving the trained model. It requires a bulk sample, which is then divided into <br />
 smaller sections to obtain a training set (to train the CVAE) and a testing set (to test the behavior of the CVAE on bulks samples <br />

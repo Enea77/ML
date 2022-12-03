@@ -1,4 +1,7 @@
 <h1> Convolutional Neural Networks for Anomaly Detection in Scanning Transmission Electron Microscopy  </h1>
+<h2> Enea Prifti, James P. Buban, Arashdeep Thind, Robert F Klie </h2>
+<h2> University of Illinois Chicago, Department of Physics, 845 W Taylor Street, Chicago, IL 60607 </h2>
+
 
 `CVAE_training.py` - Code for training the CVAE and saving the trained model. It requires a bulk sample, which is then divided into <br />
 smaller sections to obtain a training set (to train the CVAE) and a testing set (to test the behavior of the CVAE on bulks samples <br />

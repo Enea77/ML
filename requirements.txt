@@ -1,0 +1,13 @@
+keras==2.8.0
+Keras-Preprocessing==1.1.2
+keras-vis==0.4.1
+matplotlib==3.2.2
+matplotlib-venn==0.11.7
+numpy==1.21.6
+opencv-contrib-python==4.6.0.66
+opencv-python==4.6.0.66
+opencv-python-headless==4.6.0.66
+scikit-image==0.18.3
+scikit-learn==1.0.2
+scipy==1.7.3
+tensorflow==2.8.0

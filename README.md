@@ -5,7 +5,7 @@
 The codes in this repository are used in the paper mentioned above to detect anomalies in the pattern of a crystal lattice 
 using a Convolutional Variational Autoencoder (CVAE) trained to reproduce that pattern. <br />
 
-These codes are written in Google Colab using 'Python 3.8.15'. Each code is provided in two versions `.py` and `.ipynb`. The requirements to run the codes
+These codes are written in Google Colab using `Python 3.8.15`. Each code is provided in two versions `.py` and `.ipynb`. The requirements to run the codes
 are listed in `requirements.txt`. 
 
 `CVAE_training` - Code for training the CVAE and saving the trained model. It requires a bulk sample, which is then divided into 
